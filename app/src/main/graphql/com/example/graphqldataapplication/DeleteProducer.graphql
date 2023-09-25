@@ -1,0 +1,3 @@
+mutation DeleteProducer($id: ID!) {
+    deleteProducer(id: $id)
+}

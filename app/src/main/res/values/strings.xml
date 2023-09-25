@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GraphqlDataApplication</string>
+    <string name="_1">1</string>
+    <string name="data">Data</string>
+    <string name="add_product">Add Product</string>
+    <string name="enter_city">Enter City</string>
+    <string name="add_producer">Add Producer</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="see_product">See Product</string>
+</resources>

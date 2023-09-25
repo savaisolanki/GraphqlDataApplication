@@ -1,0 +1,10 @@
+mutation AddProducer($name: String!, $location: String!) {
+    addProducer(producerInput: {
+        name: $name,
+        location: $location
+    }) {
+        id
+        name
+        location
+    }
+}

@@ -1,0 +1,130 @@
+#
+directive @cacheControl(
+    maxAge: Int
+    scope: CacheControlScope
+) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+#
+type Query {
+    #
+    teas(
+        id: ID
+        name: String
+        description: String
+        price: Float
+        producerId: String
+    ): [Tea]!
+
+    #
+    teaById(id: ID): Tea
+
+    #
+    producers(
+        id: ID
+        name: String
+        location: String
+        teas: [teaInput]
+    ): [Producer]
+
+    #
+    producerById(id: ID): Producer
+}
+
+#
+type Tea {
+    #
+    id: ID!
+
+    #
+    name: String!
+
+    #
+    description: String!
+
+    #
+    price: Float!
+}
+
+#
+input teaInput {
+    #
+    producerId: String!
+
+    #
+    name: String!
+
+    #
+    description: String!
+
+    #
+    price: Float!
+}
+
+#
+type Producer {
+    #
+    id: ID!
+
+    #
+    name: String!
+
+    #
+    location: String!
+
+    #
+    teas: [Tea]!
+}
+
+#
+type Mutation {
+    #
+    addTea(teaInput: teaInput): Tea
+
+    #
+    addProducer(producerInput: producerInput): Producer
+
+    #
+    updateTea(id: ID!, args: teaUpdate): Tea!
+
+    #
+    deleteTea(id: ID!): Boolean
+
+    #
+    deleteProducer(id: ID!): Boolean
+}
+
+#
+input producerInput {
+    #
+    name: String!
+
+    #
+    location: String!
+
+    #
+    teas: [teaInput]
+}
+
+#
+input teaUpdate {
+    #
+    name: String
+
+    #
+    description: String
+
+    #
+    price: Float
+}
+
+#
+enum CacheControlScope {
+    #
+    PUBLIC
+
+    #
+    PRIVATE
+}
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload

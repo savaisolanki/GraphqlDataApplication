@@ -1,0 +1,8 @@
+query Teas{
+    teas{
+        name
+        id
+        description
+        price
+    }
+}
