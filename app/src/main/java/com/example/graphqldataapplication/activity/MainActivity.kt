@@ -13,11 +13,13 @@ import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.exception.ApolloException
 import com.example.graphqldataapplication.R
 import com.example.graphqldataapplication.adapter.GraphQlAdapter
+import com.example.graphqldataapplication.adapter.GraphQlTeasAdapter
 import com.example.graphqldataapplication.databinding.ActivityMainBinding
 import com.example.graphqldataapplication.interfaceclass.RecyclerViewItemClick
 import com.example.graphqldataapplication.networkdata.ApolloClient
 import com.example.graphqldatapplication.DeleteProducerMutation
 import com.example.graphqldatapplication.ProductListQuery
+import com.example.graphqldatapplication.TeasQuery
 import kotlinx.coroutines.launch
 import java.util.ArrayList
 
@@ -27,14 +29,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var apolloClient: ApolloClient
 
     private lateinit var graphQlAdapter: GraphQlAdapter
+    private lateinit var graphQlTeasAdapter: GraphQlTeasAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.pbProgressBar.visibility = View.VISIBLE
-
-
 
         lifecycleScope.launch {
             try {
@@ -94,6 +95,10 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                             builder.show()
+
+                        }
+
+                        override fun itemTeasEditClick(position: Int) {
 
                         }
                     })

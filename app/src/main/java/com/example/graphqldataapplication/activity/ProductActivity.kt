@@ -54,9 +54,14 @@ class ProductActivity : AppCompatActivity() {
         }
 
         binding.btnSeeProducer.setOnClickListener {
-
             binding.pbProgressBar.visibility=View.VISIBLE
             val intent = Intent(this@ProductActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSeeTea.setOnClickListener {
+            binding.pbProgressBar.visibility=View.VISIBLE
+            val intent = Intent(this@ProductActivity, TeasActivity::class.java)
             startActivity(intent)
         }
 
@@ -66,6 +71,16 @@ class ProductActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.pbProgressBar.visibility=View.GONE
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.tvTeaId.text?.clear()
+        binding.tvTeaName.text?.clear()
+        binding.tvTeasDesc.text?.clear()
+        binding.tvTeasPrice.text?.clear()
+        binding.tvName.text?.clear()
+        binding.tvCity.text?.clear()
     }
 
     override fun onRestart() {

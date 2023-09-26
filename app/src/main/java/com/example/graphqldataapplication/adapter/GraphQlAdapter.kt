@@ -12,7 +12,7 @@ import java.util.ArrayList
 
 
 class GraphQlAdapter(
-    private var teasList: ArrayList<ProductListQuery.Producer?>,
+    private var producerList: ArrayList<ProductListQuery.Producer?>,
     private val listener: RecyclerViewItemClick
 
 ) :
@@ -48,9 +48,9 @@ class GraphQlAdapter(
     }
 
     override fun onBindViewHolder(holder: GraphQlAdapterViewHolder, position: Int) {
-        binding.tvId.text= teasList[position]?.id
-        binding.tvName.text = teasList[position]?.name
-        binding.tvPrice.text = teasList[position]?.location
+        binding.tvId.text= producerList[position]?.id
+        binding.tvName.text = producerList[position]?.name
+        binding.tvPrice.text = producerList[position]?.location
 
         binding.root.setOnClickListener {
             listener.itemClick(position)
@@ -58,12 +58,12 @@ class GraphQlAdapter(
     }
 
     override fun getItemCount(): Int {
-        return teasList.size
+        return producerList.size
     }
 
     fun removeItem(position: Int) {
-        if (position in 0 until teasList.size) {
-            teasList.removeAt(position)
+        if (position in 0 until producerList.size) {
+            producerList.removeAt(position)
             notifyItemRemoved(position)
         }
     }

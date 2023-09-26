@@ -15,22 +15,25 @@
         android:theme="@style/Theme.GraphqlDataApplication"
         tools:targetApi="31">
         <activity
+            android:name=".activity.UpdateTeasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TeasActivity"
+            android:exported="false"
+            android:label="@string/title_activity_teas"
+            android:theme="@style/Theme.GraphqlDataApplication" />
+        <activity
             android:name=".activity.ProductActivity"
-            android:exported="true" >
-
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
