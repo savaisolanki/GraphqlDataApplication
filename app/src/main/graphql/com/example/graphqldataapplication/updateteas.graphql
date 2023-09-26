@@ -1,0 +1,12 @@
+mutation UpdateTeas($id: ID!, $name: String!,$desc: String!, $price: Float!) {
+    updateTea(id:$id, args: {
+        name: $name,
+        description: $desc,
+        price: $price
+    }) {
+        id
+        name
+        description
+        price
+    }
+}

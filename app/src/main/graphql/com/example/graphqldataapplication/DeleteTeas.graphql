@@ -1,0 +1,3 @@
+mutation DeleteTeas($id: ID!) {
+    deleteTea(id: $id)
+}
