@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.teas.ui.UpdateTeasFragment">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_arrow_back"
+            android:id="@+id/ivArrow"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvUpdateTeas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvUpdateTea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="@string/update_teas"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etTeaId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="@string/enter_id"
+                    android:inputType="text"
+                    android:padding="@dimen/_20sdp"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvUpdateTea" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etTeaName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="@string/enter_name"
+                    android:inputType="text"
+                    android:padding="@dimen/_20sdp"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@id/etTeaId"
+                    app:layout_constraintStart_toStartOf="@id/etTeaId"
+                    app:layout_constraintTop_toBottomOf="@id/etTeaId" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etTeasDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="@string/enter_desc"
+                    android:inputType="text"
+                    android:padding="@dimen/_20sdp"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@id/etTeaId"
+                    app:layout_constraintStart_toStartOf="@id/etTeaId"
+                    app:layout_constraintTop_toBottomOf="@id/etTeaName" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etTeasPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:hint="@string/enter_price"
+                    android:inputType="text"
+                    android:padding="@dimen/_20sdp"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@id/etTeaId"
+                    app:layout_constraintStart_toStartOf="@id/etTeaId"
+                    app:layout_constraintTop_toBottomOf="@id/etTeasDesc" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUpdateTea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/update_teas"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@id/etTeaId"
+                    app:layout_constraintEnd_toEndOf="@id/etTeaId"
+                    app:layout_constraintTop_toBottomOf="@id/etTeasPrice" />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <ProgressBar
+            android:id="@+id/pbProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_50sdp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/black"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
