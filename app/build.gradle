@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.apollographql.apollo3'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 
 }
 
@@ -55,18 +57,43 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'org.chromium.net:cronet-embedded:113.5672.61'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.7.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+
+    //Apollo Client
     implementation 'com.apollographql.apollo3:apollo-runtime:3.7.0'
+    implementation 'com.apollographql.apollo:apollo-coroutines-support:2.5.9'
+
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
-    implementation 'com.apollographql.apollo:apollo-coroutines-support:2.5.9'
+    //SDP Library
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.7.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.7.3"
+
+    //room
+    implementation "androidx.room:room-runtime:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
+
+    //live data & view model
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
+
+    //okhttp interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1'
+
+    //lottie animation
+    implementation "com.airbnb.android:lottie:5.2.0"
+
+
+
 
 
 

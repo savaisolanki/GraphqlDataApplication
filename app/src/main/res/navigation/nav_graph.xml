@@ -3,26 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
-
+    app:startDestination="@id/splashFragment">
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.graphqldataapplication.activity.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" >
-
+        android:id="@+id/splashFragment"
+        android:name="com.example.graphqldataapplication.fragment.splash.ui.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_splashFragment_to_teasProducerAddFragment"
+            app:destination="@id/teasProducerAddFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.graphqldataapplication.activity.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" >
-
+        android:id="@+id/teasProducerAddFragment"
+        android:name="com.example.graphqldataapplication.fragment.main.ui.TeasProducerAddFragment"
+        android:label="TeasProducerAddFragment"
+        tools:layout="@layout/fragment_teas_producer_add">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_teasProducerAddFragment_to_producerFragment"
+            app:destination="@id/producerFragment" />
+        <action
+            android:id="@+id/action_teasProducerAddFragment_to_teasFragment"
+            app:destination="@id/teasFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/producerFragment"
+        android:name="com.example.graphqldataapplication.fragment.producer.ui.ProducerFragment"
+        android:label="ProducerFragment"
+        tools:layout="@layout/fragment_producer" />
+    <fragment
+        android:id="@+id/teasFragment"
+        android:name="com.example.graphqldataapplication.fragment.teas.ui.TeasFragment"
+        android:label="TeasFragment"
+        tools:layout="@layout/fragment_teas">
+        <action
+            android:id="@+id/action_teasFragment_to_updateTeasFragment"
+            app:destination="@id/updateTeasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTeasFragment"
+        android:name="com.example.graphqldataapplication.fragment.teas.ui.UpdateTeasFragment"
+        android:label="UpdateTeasFragment"
+        tools:layout="@layout/fragment_update_teas" />
 </navigation>

@@ -50,7 +50,7 @@ class GraphQlAdapter(
     override fun onBindViewHolder(holder: GraphQlAdapterViewHolder, position: Int) {
         binding.tvId.text= producerList[position]?.id
         binding.tvName.text = producerList[position]?.name
-        binding.tvPrice.text = producerList[position]?.location
+        binding.tvLocation.text = producerList[position]?.location
 
         binding.root.setOnClickListener {
             listener.itemClick(position)
