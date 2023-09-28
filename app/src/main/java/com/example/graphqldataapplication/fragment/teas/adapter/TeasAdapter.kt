@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.graphqldataapplication.databinding.ItemsDataTeasBinding
 import com.example.graphqldataapplication.interfaceclass.RecyclerViewItemClick
 import com.example.graphqldatapplication.TeasQuery
-import com.example.graphqldatapplication.UpdateTeasMutation
 import java.util.ArrayList
 
 

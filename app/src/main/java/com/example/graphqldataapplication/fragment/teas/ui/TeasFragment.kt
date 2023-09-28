@@ -2,6 +2,7 @@ package com.example.graphqldataapplication.fragment.teas.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,8 @@ class TeasFragment : Fragment() {
     private lateinit var binding: FragmentTeasBinding
     private lateinit var teasViewModel: TeasViewModel
     private lateinit var teasAdapter: TeasAdapter
+    private var isDataLoaded = false
+    private var uniqueTeasList: ArrayList<TeasQuery.Tea?> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,16 +50,17 @@ class TeasFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_teas, container, false)
         setLiveDataObservers()
-        teasViewModel.getTeas()
+
+        if (!isDataLoaded) {
+            teasViewModel.getTeas()
+            isDataLoaded = true
+        }
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        teasViewModel.getTeas()
 
-    }
+
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -73,6 +77,9 @@ class TeasFragment : Fragment() {
 
                     val teas = response.data?.data?.teas
 
+
+                    Log.d("response", "setLiveDataObserversResponse: ${response.data?.data?.teas} ")
+
                     if (!teas.isNullOrEmpty()) {
                         val uniqueTeasMap = HashMap<String, TeasQuery.Tea>()
 
@@ -85,7 +92,7 @@ class TeasFragment : Fragment() {
                             }
                         }
 
-                        val uniqueTeasList = ArrayList(uniqueTeasMap.values)
+                        uniqueTeasList = ArrayList(uniqueTeasMap.values)
 
                         teasAdapter =
                             TeasAdapter(uniqueTeasList as ArrayList<TeasQuery.Tea?>,
@@ -98,14 +105,16 @@ class TeasFragment : Fragment() {
                                         builder.setPositiveButton("Yes") { _, _ ->
                                             binding.pbProgressBar.visibility = View.VISIBLE
 
-                                            response.data.data?.teas.let {
-                                                it?.get(position)?.id?.let { it1 ->
+                                            uniqueTeasList.let {
+                                                it[position]?.id?.let { it1 ->
                                                     teasViewModel.deleteTea(id = it1)
                                                 }
 
                                             }
 
                                             teasAdapter.removeItem(position)
+
+                                            Log.d("delete", "delete:${response.data.data?.teas} ")
 
 
                                         }
@@ -125,14 +134,15 @@ class TeasFragment : Fragment() {
                                     }
 
                                     override fun itemTeasEditClick(position: Int) {
-                                        val bundle = Bundle()
-                                        bundle.putString(
-                                            "id",
-                                            (response.data.data?.teas as ArrayList<TeasQuery.Tea?>)[position]?.id
-                                        )
-                                        findNavController().navigate(
-                                            R.id.action_teasFragment_to_updateTeasFragment, bundle
-                                        )
+                                        val selectedTea = uniqueTeasList[position]
+                                        selectedTea?.id?.let {
+                                            val bundle = Bundle()
+                                            bundle.putString("id", it)
+                                            findNavController().navigate(
+                                                R.id.action_teasFragment_to_updateTeasFragment,
+                                                bundle
+                                            )
+                                        }
 
                                     }
                                 })
@@ -157,6 +167,9 @@ class TeasFragment : Fragment() {
                     binding.pbProgressBar.visibility = View.GONE
 
                     if (response.data?.data?.deleteTea == true) {
+
+                        Log.d("delete", "deleteTeaResponse: ${response.data.data?.deleteTea} ")
+
                         Toast.makeText(
                             requireContext(), "Delete Tea Successfully", Toast.LENGTH_SHORT
                         ).show()

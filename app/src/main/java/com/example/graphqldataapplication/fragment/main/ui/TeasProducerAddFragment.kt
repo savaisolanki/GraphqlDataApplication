@@ -106,7 +106,7 @@ class TeasProducerAddFragment : Fragment() {
                         is BaseResponse.Success -> {
                             binding.pbProgressBar.visibility = View.GONE
 
-                            if (it.toString().isNotEmpty()) {
+                            if (it.data?.data?.addProducer != null) {
                                 val action =
                                     TeasProducerAddFragmentDirections.actionTeasProducerAddFragmentToProducerFragment()
                                 findNavController().navigate(action)
