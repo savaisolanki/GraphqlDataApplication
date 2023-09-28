@@ -44,8 +44,6 @@ class ProducerFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_producer, container, false)
         setLiveDataObservers()
         producerViewModel.getProducer()
-
-
         return binding.root
     }
 
@@ -56,7 +54,6 @@ class ProducerFragment : Fragment() {
             when (response) {
                 is BaseResponse.Loading -> {
                     binding.pbProgressBar.visibility = View.VISIBLE
-
                 }
 
                 is BaseResponse.Success -> {

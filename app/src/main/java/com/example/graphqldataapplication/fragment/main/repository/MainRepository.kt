@@ -3,8 +3,7 @@ package com.example.graphqldataapplication.fragment.main.repository
 import com.apollographql.apollo3.api.ApolloResponse
 import com.example.graphqldataapplication.networkdata.ApolloClient
 import com.example.graphqldatapplication.AddProducerMutation
-import com.example.graphqldatapplication.ProductListQuery
-import com.example.graphqldatapplication.TeasQuery
+
 
 class MainRepository {
 

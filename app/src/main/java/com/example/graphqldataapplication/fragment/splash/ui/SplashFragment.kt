@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.graphqldataapplication.R
-import com.example.graphqldataapplication.databinding.FragmentProducerBinding
 import com.example.graphqldataapplication.databinding.FragmentSplashBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

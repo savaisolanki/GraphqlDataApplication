@@ -3,7 +3,9 @@ package com.example.graphqldataapplication.fragment.producer.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
+import com.example.graphqldataapplication.R
 import com.example.graphqldataapplication.databinding.ItemsDataBinding
 import com.example.graphqldataapplication.interfaceclass.RecyclerViewItemClick
 import com.example.graphqldatapplication.ProductListQuery
@@ -18,6 +20,7 @@ class ProducerAdapter(
     RecyclerView.Adapter<ProducerAdapter.ProducerAdapterViewHolder>() {
 
     private lateinit var binding:ItemsDataBinding
+    private var lastPosition = -1
 
 
     inner class ProducerAdapterViewHolder(binding: ItemsDataBinding) :
@@ -49,6 +52,27 @@ class ProducerAdapter(
         binding.tvId.text= producerList[position]?.id
         binding.tvName.text = producerList[position]?.name
         binding.tvLocation.text = producerList[position]?.location
+
+
+        val scrollDirection = position - lastPosition
+        if (scrollDirection > 0) {
+            val rightSlideAnimation = AnimationUtils.loadAnimation(
+                binding.root.context,
+                R.anim.slide_right
+            )
+            holder.itemView.startAnimation(rightSlideAnimation)
+        } else if (scrollDirection < 0) {
+            val leftSlideAnimation = AnimationUtils.loadAnimation(
+                binding.root.context,
+                R.anim.slide_left
+            )
+            holder.itemView.startAnimation(leftSlideAnimation)
+        }
+
+        lastPosition = position
+
+
+
 
         binding.root.setOnClickListener {
             listener.itemClick(position)

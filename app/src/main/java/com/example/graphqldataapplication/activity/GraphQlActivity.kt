@@ -11,7 +11,7 @@ import com.example.graphqldataapplication.databinding.ActivityGraphQlBinding
 class GraphQlActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGraphQlBinding
-    var navController: NavController? = null
+    private var navController: NavController? = null
     private lateinit var navHostFrag: NavHostFragment
 
 

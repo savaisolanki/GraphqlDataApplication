@@ -4,10 +4,8 @@ package com.example.graphqldataapplication.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.graphqldataapplication.databinding.ItemsDataBinding
 import com.example.graphqldataapplication.databinding.ItemsDataTeasBinding
 import com.example.graphqldataapplication.interfaceclass.RecyclerViewItemClick
-import com.example.graphqldatapplication.ProductListQuery
 import com.example.graphqldatapplication.TeasQuery
 import java.util.ArrayList
 
@@ -49,10 +47,10 @@ class GraphQlTeasAdapter(
     }
 
     override fun onBindViewHolder(holder: GraphQlTeasAdapterViewHolder, position: Int) {
-        binding.tvId.text= teasList[position]?.id
-        binding.tvName.text = teasList[position]?.name
-        binding.tvPrice.text = teasList[position]?.price.toString()
-        binding.tvDesc.text = teasList[position]?.description
+        binding.tvId.text= teasList[position].id
+        binding.tvName.text = teasList[position].name
+        binding.tvPrice.text = teasList[position].price.toString()
+        binding.tvDesc.text = teasList[position].description
 
         binding.root.setOnClickListener {
             listener.itemClick(position)

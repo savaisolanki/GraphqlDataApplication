@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.example.graphqldataapplication.R
 import com.example.graphqldataapplication.databinding.FragmentTeasBinding
 import com.example.graphqldataapplication.fragment.teas.adapter.TeasAdapter
@@ -28,7 +29,6 @@ class TeasFragment : Fragment() {
     private lateinit var binding: FragmentTeasBinding
     private lateinit var teasViewModel: TeasViewModel
     private lateinit var teasAdapter: TeasAdapter
-    private var isDataLoaded = false
     private var uniqueTeasList: ArrayList<TeasQuery.Tea?> = ArrayList()
 
 
@@ -40,6 +40,7 @@ class TeasFragment : Fragment() {
         teasViewModel = ViewModelProvider(
             this, TeasViewModelFactory(teasRepository)
         )[TeasViewModel::class.java]
+        teasViewModel.getTeas()
 
 
     }
@@ -49,12 +50,9 @@ class TeasFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_teas, container, false)
-        setLiveDataObservers()
-
-        if (!isDataLoaded) {
             teasViewModel.getTeas()
-            isDataLoaded = true
-        }
+
+        setLiveDataObservers()
 
         return binding.root
     }
@@ -95,7 +93,8 @@ class TeasFragment : Fragment() {
                         uniqueTeasList = ArrayList(uniqueTeasMap.values)
 
                         teasAdapter =
-                            TeasAdapter(uniqueTeasList as ArrayList<TeasQuery.Tea?>,
+                            TeasAdapter(
+                                uniqueTeasList,
                                 object : RecyclerViewItemClick {
                                     override fun itemClick(position: Int) {
                                         val builder = AlertDialog.Builder(requireContext())
