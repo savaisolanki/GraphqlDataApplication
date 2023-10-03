@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DefaultItemAnimator
 import com.example.graphqldataapplication.R
 import com.example.graphqldataapplication.databinding.FragmentTeasBinding
 import com.example.graphqldataapplication.fragment.teas.adapter.TeasAdapter
@@ -40,7 +39,6 @@ class TeasFragment : Fragment() {
         teasViewModel = ViewModelProvider(
             this, TeasViewModelFactory(teasRepository)
         )[TeasViewModel::class.java]
-        teasViewModel.getTeas()
 
 
     }
@@ -50,9 +48,9 @@ class TeasFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_teas, container, false)
-            teasViewModel.getTeas()
 
         setLiveDataObservers()
+        teasViewModel.getTeas()
 
         return binding.root
     }
